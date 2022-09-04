@@ -1,169 +1,197 @@
 #include <stdio.h>
 void main()
-{
-    int a,b,c,d,e,f,g,h;
-    int s0,s1,s2,s_0,s_1,s_2;
-    int op,i;
-    int op1,op2,op3,op4,op5,op6,op7,op8;
-    printf("Enter the inputs for a 8:1 MUX\n");
-    
-    printf("Enter value of input I0:");
-    scanf("%d",&a);
-    printf("Enter value of input I1:");
-    scanf("%d",&b);
-    printf("Enter value of input I2:");
-    scanf("%d",&c);
-    printf("Enter value of input I3:");
-    scanf("%d",&d);
-    printf("Enter value of input I4:");
-    scanf("%d",&e);
-    printf("Enter value of input I5:");
-    scanf("%d",&f);
-    printf("Enter value of input I6:");
-    scanf("%d",&g);
-    printf("Enter value of input I7:");
-    scanf("%d",&h);
-    
-    printf("Enter the value of 3 select lines(0/1):");
-    scanf("%d %d %d",&s2,&s1,&s0);
-    
-    if(s0<2 && s1<2 && s2<2)
-    {
-            if(s0==1)
-            {
-               s_0=0; 
-            }
-            else if(s0==0)
-            {
-                s_0=1;
-            }
-            
-            if(s1==1)
-            {
-               s_1=0; 
-            }
-            else if(s1==0)
-            {
-                s_1=1;
-            }
-           
-	      if(s2==1)
-            {
-               s_2=0; 
-            }
-            else if(s2==0)
-            {
-                s_2=1;
-            }
-        op = a*s_2*s_1*s_0 + b*s_2*s_1*s0 + c*s_2*s1*s_0 + d*s_2*s1*s0 + 
-             e*s2*s_1*s_0 + f*s2*s_1*s0 + g*s2*s1*s_0 + h*s2*s1*s0 ;
-        
-        printf("Output=%d\n",op);
-        a=op;
-printf("DEMUX function:\n");
-printf("Output from the MUX is fed into DEMUX as input.\n");
+{ 
+  int a, b, c, d, e, f, g, h;
+  int s0, s1, s2, s_0, s_1, s_2;
+  int op, i;
+  int op1, op2, op3, op4, op5, op6, op7, op8;
+  printf ("Enter the inputs for a 8:1 MUX\n");
 
-printf("Enter the value of 3 select lines(0/1):");
-scanf("%d %d %d",&s2,&s1,&s0);
+  //taking input for the multiplexer
+  printf ("Enter value of input I0:");
+  scanf ("%d", &a);
+  printf ("Enter value of input I1:");
+  scanf ("%d", &b);
+  printf ("Enter value of input I2:");
+  scanf ("%d", &c);
+  printf ("Enter value of input I3:");
+  scanf ("%d", &d);
+  printf ("Enter value of input I4:");
+  scanf ("%d", &e);
+  printf ("Enter value of input I5:");
+  scanf ("%d", &f);
+  printf ("Enter value of input I6:");
+  scanf ("%d", &g);
+  printf ("Enter value of input I7:");
+  scanf ("%d", &h);
 
-if(s2==0)
+  //taking input for select lines
+  printf ("Enter the value of 3 select lines(0/1):");
+  scanf ("%d %d %d", &s2, &s1, &s0);
+
+  //condition to keep select lines in binary
+  if ((s0 < 2 && s1 < 2 && s2 < 2) && (s0 > -1 && s1 > -1 && s2 > -1))
+    {
+      if (s0 == 1)
+	{
+	  s_0 = 0;
+	}
+      else if (s0 == 0)
+	{
+	  s_0 = 1;
+	}
+
+      if (s1 == 1)
+	{
+	  s_1 = 0;
+	}
+      else if (s1 == 0)
+	{
+	  s_1 = 1;
+	}
+
+      if (s2 == 1)
+	{
+	  s_2 = 0;
+	}
+      else if (s2 == 0)
+	{
+	  s_2 = 1;
+	}
+      //Boolean expression to obtain output
+    op = a * s_2 * s_1 * s_0 + b * s_2 * s_1 * s0 + c * s_2 * s1 * s_0 +
+	d * s_2 * s1 * s0 + e * s2 * s_1 * s_0 + f * s2 * s_1 * s0 +
+	g * s2 * s1 * s_0 + h * s2 * s1 * s0;
+
+      printf ("Output=%d\n", op);
+      a = op;
+    }//bracket to end MUX operation
+  else
+    {
+      i=1;
+      printf ("Invalid select line input");
+    }
+//terminates the program
+if(i=1)
 {
-    if(s1==0 && s0==0)
-    {
-       op1=a;
-    for(i=1;i<9;i++)	    
-    {
-	if(i!=1)    
-       printf("op%d=0\n",i);
-    else
-       printf("op%d=%d\n",i,op1);
-    }
-    }
-    else if(s1==0 && s0==1)
-    {
-       op2=a;
-    for(i=1;i<9;i++)	    
-    {
-	if(i!=2)    
-       printf("op%d=0\n",i);
-    else
-       printf("op%d=%d\n",i,op2);
-    }
-    }
-    else if(s1==1 && s0==0)
-    {
-       op3=a;
-    for(i=1;i<9;i++)	    
-    {
-	if(i!=3)    
-       printf("op%d=0\n",i);
-    else
-       printf("op%d=%d\n",i,op3);
-    }
-    }
-    else if(s1==1 && s0==1)
-    {
-       op4=a;
-    for(i=1;i<9;i++)	    
-    {
-	if(i!=4)    
-       printf("op%d=0\n",i);
-    else
-       printf("op%d=%d\n",i,op4);
-    }
-    }
+      goto out;
 }
- 
-if(s2==1)
+
+//program continues if proper select lines are given
+else
+{  
+  printf ("DEMUX function:\n");
+  printf ("Output from the MUX is fed into DEMUX as input.\n");
+
+//taking input for select lines for demultiplexer
+  printf ("Enter the value of 3 select lines(0/1):");
+  scanf ("%d %d %d", &s2, &s1, &s0);
+
+//condition to keep select lines in binary
+if ((s0 < 2 && s1 < 2 && s2 < 2) && (s0 > -1 && s1 > -1 && s2 > -1))
 {
-  if(s1==0 && s0==0)
-  {
-    op5=a;
-    for(i=1;i<9;i++)	    
+//code to obtain DEMUX output using nested if and else if ladder
+      if (s2 == 0)
+	{
+	  if (s1 == 0 && s0 == 0)
+	    {
+	      op1 = a;
+	      for (i = 1; i < 9; i++)
+		{
+		  if (i != 1)
+		    printf ("op%d=0\n", i);
+		  else
+		    printf ("op%d=%d\n", i, op1);
+		}
+	    }
+	  else if (s1 == 0 && s0 == 1)
+	    {
+	      op2 = a;
+	      for (i = 1; i < 9; i++)
+		{
+		  if (i != 2)
+		    printf ("op%d=0\n", i);
+		  else
+		    printf ("op%d=%d\n", i, op2);
+		}
+	    }
+	  else if (s1 == 1 && s0 == 0)
+	    {
+	      op3 = a;
+	      for (i = 1; i < 9; i++)
+		{
+		  if (i != 3)
+		    printf ("op%d=0\n", i);
+		  else
+		    printf ("op%d=%d\n", i, op3);
+		}
+	    }
+	  else if (s1 == 1 && s0 == 1)
+	    {
+	      op4 = a;
+	      for (i = 1; i < 9; i++)
+		{
+		  if (i != 4)
+		    printf ("op%d=0\n", i);
+		  else
+		    printf ("op%d=%d\n", i, op4);
+		}
+	    }
+	}//bracket to end first else if ladder
+
+      if (s2 == 1)
+	{
+	  if (s1 == 0 && s0 == 0)
+	    {
+	      op5 = a;
+	      for (i = 1; i < 9; i++)
+		{
+		  if (i != 5)
+		    printf ("op%d=0\n", i);
+		  else
+		    printf ("op%d=%d\n", i, op5);
+		}
+	    }
+	  else if (s1 == 0 && s0 == 1)
+	    {
+	      op6 = a;
+	      for (i = 1; i < 9; i++)
+		{
+		  if (i != 6)
+		    printf ("op%d=0\n", i);
+		  else
+		    printf ("op%d=%d\n", i, op6);
+		}
+	    }
+	  else if (s1 == 1 && s0 == 0)
+	    {
+	      op7 = a;
+	      for (i = 1; i < 9; i++)
+		{
+		  if (i != 7)
+		    printf ("op%d=0\n", i);
+		  else
+		    printf ("op%d=%d\n", i, op7);
+		}
+	    }
+	  else if (s1 == 1 && s0 == 1)
+	    {
+	      op8 = a;
+	      for (i = 1; i < 9; i++)
+		{
+		  if (i != 8)
+		    printf ("op%d=0\n", i);
+		  else
+		    printf ("op%d=%d\n", i, op8);
+		}
+	    }
+	}//bracket to end second else if ladder
+}//bracket to end DEMUX operation
+  else
     {
-	if(i!=5)    
-       printf("op%d=0\n",i);
-    else
-       printf("op%d=%d\n",i,op5);
+      printf ("Invalid select line input");
     }
-  }
-  else if(s1==0 && s0==1)
-  {
-    op6=a;
-    for(i=1;i<9;i++)	    
-    {
-	if(i!=6)    
-       printf("op%d=0\n",i);
-    else
-       printf("op%d=%d\n",i,op6);
-    }
-  }
-  else if(s1==1 && s0==0)
-  {
-    op7=a;
-    for(i=1;i<9;i++)	    
-    {
-	if(i!=7)    
-       printf("op%d=0\n",i);
-    else
-       printf("op%d=%d\n",i,op7);
-    }
-  }
-  else if(s1==1 && s0==1)
-  {
-    op8=a;
-    for(i=1;i<9;i++)	    
-    {
-	if(i!=8)    
-       printf("op%d=0\n",i);
-    else
-       printf("op%d=%d\n",i,op8);
-    }
-  } 
 }
- if (s2!=0 && s2!=1)
- {
-     printf("Invalid input");
- }
-}
+out:
+  printf ("\nRun the program once again");
 }
